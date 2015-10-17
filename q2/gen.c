@@ -25,8 +25,14 @@ int main()
         int j;
         char ch = 'a'+(char)uniformRand(0, 26);
         for (j=0; j<len; j++) {
-            if (ch < 'z' && uniformRand(0, 5000) < 1)
-                ch++;
+            if (ch < 'z' && uniformRand(0, len/10) < 1) {
+                char inc;
+                if (uniformRand(0, 20) < 1)
+                    inc = (char)uniformRand(1, 26);
+                else
+                    inc = (char)uniformRand(1, 5);
+                ch = (ch+inc>'z') ? 'z' : ch+inc;
+            }
             str[j] = ch;
         }
         str[j] = '\0';
